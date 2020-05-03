@@ -26,10 +26,9 @@ Interfacing GY-85 (IMU module) with Raspberry Pi 3b+
 - Close the terminal
 
 # Step 2: Enabling i2c on Raspberry Pi
-- Goto the following directory  /etc/modules-load.d/
+- Goto the following directory:      /etc/modules-load.d/
 - Open "modules.conf" file and write **i2c-dev** in the end and save the file
-*********
-- After that, open the following file  /etc/modprobe.d/raspi-blacklist.conf
+- After that, open the following file:  /etc/modprobe.d/raspi-blacklist.conf
 - Comment the line (by adding # in the start) that says **blacklist i2c-bcm2708** and save the file
 
   If the file is empty, leave it as it is
@@ -92,7 +91,7 @@ Interfacing GY-85 (IMU module) with Raspberry Pi 3b+
    
    Gyroscope(ITG): **68**
    
-   Compass(HMC): **1e**
+   Compass(HMC): **1e**       (if you see some other address for digital compass, note it down. It is explained in later section below)
    
    
 # Step 5: Downloading the code files
@@ -110,6 +109,15 @@ Interfacing GY-85 (IMU module) with Raspberry Pi 3b+
   accTest.py     
   
   compassTest.py
+  
+  **Note:** If the output from __*compassTest.py*__ is giving 0 values, it means that GY-85 module has QMC5883l instead of HMC5883l. And you might be getting **0d** instead of **1e** as address in Step 4. Special thanks to this [source](https://forum.arduino.cc/index.php?topic=519387.0) from where I figured out the right problem. If this this your case, download the following library:
+  
+      $ git clone https://github.com/RigacciOrg/py-qmc5883l.git
+      
+  Open the folder and run ***setup.py** one time. Run **qmcTest.py** instead of **compassTest.py**, and you will start seeing the values.
+  
+  **Kudos!!** The data is being acquired form GY-85 module.
+  
  
 # Main reference sources:
 
