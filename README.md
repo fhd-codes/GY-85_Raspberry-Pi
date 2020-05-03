@@ -114,7 +114,7 @@ Interfacing GY-85 (IMU module) with Raspberry Pi 3b+
   
       $ git clone https://github.com/RigacciOrg/py-qmc5883l.git
       
-  Open the folder and run ***setup.py** one time. Run **qmcTest.py** instead of **compassTest.py**, and you will start seeing the values.
+  Open the folder and run **setup.py** one time. Run **qmcTest.py** instead of **compassTest.py**, and you will start seeing the values.
   
   **Kudos!!** The data is being acquired form GY-85 module.
   
